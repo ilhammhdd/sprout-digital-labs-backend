@@ -1,0 +1,21 @@
+## extended functional requirements
+- initialize standard 8*8 chess board
+- rows and cols should have marks on them on both vertical and horizontal
+- the game only ends if king piece of either black or white is captured, 
+- white goes first then black, then alternate between them
+- after a piece moved, print out the state of the board including whose turn currently is
+- provide an input to print out current board state including whose turn currently is
+- a piece is moved by choosing its coordinate on the board and the coordinate where the player want to move it
+- pawn is the only piece whose capture movement is different from regular movement
+- pawn can only capture forward
+- pawn can move 2 cells forward on its first move
+- the pieces that can be moved depends on whose turn currently is, e.g. if it's currently black's turn then 
+only black pieces can be moved, vice versa for white
+- check and checkmate is not required
+- expect for knight, when moving the piece
+  - there's a friendly piece on the way then cannot move to and beyond that
+  - there's an enemy piece on the destination coordinate then must capture that enemy piece
+  - there's an enemy piece on the way then cannot move beyond that enemy piece
+- no take-backs, undo, or reset, a movement is final
+- coordinate format is "[a-zA-Z][1-8]", e.g. "a1", "G7"
+- to know whether there's a piece between selected coordinate and destination coordinate must know which [movement](./low-level-design.md#movement) is it doing then use that movement to trace coordinates from selected to destination coordinate
