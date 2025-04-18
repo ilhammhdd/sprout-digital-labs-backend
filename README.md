@@ -3,7 +3,7 @@
 this is a monorepo of server and website for Sprout Digital Labs Backend
 
 ## Tools and library
-1. error tracing with [tracerr](https://github.com/ztrue/tracerr) and wrapped in [errors](./server/internal/pkg/errors/)
+1. error tracing with [tracerr](https://github.com/ztrue/tracerr) and wrapped in [errors](./internal/pkg/errors/)
 1. dependency injection using [wire](https://github.com/google/wire)
 1. translation using [go text](golang.org/x/text) following guidance from [here](https://www.alexedwards.net/blog/i18n-managing-translations)
 1. configuration solution using [viper](https://github.com/spf13/viper)
@@ -26,13 +26,12 @@ install gotext: `go install golang.org/x/text/cmd/gotext@latest`\
 gotext use the message itself as the translation ID
 
 ### Adding new message
-1. add it in `const` inside [message.go](server/internal/pkg/message/message.go)
-1. add a case to translate it in [translate.go](server/internal/pkg/message/translate/translate.go)
+1. add it in `const` inside [message.go](internal/pkg/message/message.go)
+1. add a case to translate it in [translate.go](internal/pkg/message/translate/translate.go)
 > this is necessary because gotext will only generate `out.gotext.json` for a direct call to message.Printer.Printf(), Fprintf() and Sprintf(), and `Localization.Translate` did it for us
-1. go to `server` directory
 1. run: `./script/generate-translation.sh`
 1. run: `./script/cp-generated-translation.sh`
-1. for each language tag directory in `./server/internal/pkg/translation/locales`, do:
+1. for each language tag directory in `./internal/pkg/translation/locales`, do:
     1. open `messages.gotext.json`
     1. fill every empty value of `translation` key
     1. for handling plural translation fill `translation` like below:

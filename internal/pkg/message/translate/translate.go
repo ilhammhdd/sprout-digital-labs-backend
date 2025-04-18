@@ -9,6 +9,12 @@ func Translate(locale localization.Localization, message string, args ...any) st
 	switch message {
 	case messagePkg.Hello:
 		return locale.Translate(messagePkg.Hello, args...)
+	case messagePkg.SquareOutOfBounds:
+		return locale.Translate(messagePkg.SquareOutOfBounds, args...)
+	case messagePkg.NotAPiece:
+		return locale.Translate(messagePkg.NotAPiece, args...)
+	case messagePkg.InvalidDirection:
+		return locale.Translate(messagePkg.InvalidDirection, args...)
 	default:
 		return locale.Translate(message)
 	}

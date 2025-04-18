@@ -15,6 +15,51 @@
                     "expr": "args"
                 }
             ]
+        },
+        {
+            "id": "Square is out of bounds",
+            "message": "Square is out of bounds",
+            "translation": "Kotak berada diluar batas",
+            "placeholders": [
+                {
+                    "id": "Args",
+                    "string": "%[1]v",
+                    "type": "[]any",
+                    "underlyingType": "[]any",
+                    "argNum": 1,
+                    "expr": "args"
+                }
+            ]
+        },
+        {
+            "id": "Not a piece",
+            "message": "Not a piece",
+            "translation": "Bukan sebuah bidak",
+            "placeholders": [
+                {
+                    "id": "Args",
+                    "string": "%[1]v",
+                    "type": "[]any",
+                    "underlyingType": "[]any",
+                    "argNum": 1,
+                    "expr": "args"
+                }
+            ]
+        },
+        {
+            "id": "Invalid direction",
+            "message": "Invalid direction",
+            "translation": "Arah tidak valid",
+            "placeholders": [
+                {
+                    "id": "Args",
+                    "string": "%[1]v",
+                    "type": "[]any",
+                    "underlyingType": "[]any",
+                    "argNum": 1,
+                    "expr": "args"
+                }
+            ]
         }
     ]
 }

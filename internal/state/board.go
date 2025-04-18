@@ -1,8 +1,8 @@
-package main
+package state
 
-import "fmt"
+import "github.com/ilhammhdd/sprout-digital-labs-backend/internal/entity"
 
-var board = [10][10]string{
+var Board = [10][10]string{
 	{" ", "A ", "B ", "C ", "D ", "E ", "F ", "G ", "H ", " "},
 	{"8", "RB", "TB", "BB", "QB", "KB", "BB", "TB", "RB", "8"},
 	{"7", "PB", "PB", "PB", "PB", "PB", "PB", "PB", "PB", "7"},
@@ -15,27 +15,9 @@ var board = [10][10]string{
 	{" ", "A ", "B ", "C ", "D ", "E ", "F ", "G ", "H ", " "},
 }
 
-type turn struct {
-	id          uint16
-	playerWhite bool
-	action      [2]string
-}
-
-var turns []turn
-
-var captured [2][]string
-
-func main() {
-	for i := 0; i < 10; i++ {
-		for j := 0; j < 10; j++ {
-			if (i+j)%2 != 0 && board[i][j] == "  " {
-				fmt.Print(" ## ")
-			} else if j == 0 || j == 9 {
-				fmt.Printf("%s", board[i][j])
-			} else {
-				fmt.Printf(" %s ", board[i][j])
-			}
-		}
-		fmt.Println()
+func getBoardIndices(square entity.Square) entity.Indices {
+	if square[0] >= 'a' && square[0] <= 'z' {
+		square[0] -= 'a' - 'A'
 	}
+	return entity.Indices{int(9 - (square[1] - '0')), int(square[0] - 'A' + 1)}
 }
