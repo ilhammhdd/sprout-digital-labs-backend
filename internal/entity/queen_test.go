@@ -3,11 +3,13 @@ package entity
 import (
 	"testing"
 
+	"github.com/ilhammhdd/sprout-digital-labs-backend/internal/pkg/errors"
+	"github.com/ilhammhdd/sprout-digital-labs-backend/internal/pkg/message"
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGetValidSquares_QueenBlackInit(t *testing.T) {
-	givenQueen := Queen{1, 4}
+func TestGetValidSquares_QueenDarkInit(t *testing.T) {
+	givenQueen := Queen{Indices: Indices{1, 4}}
 	expectedValidSquares := Set[Square]{
 		// horizontal
 		{'A', '8'}: {},
@@ -48,7 +50,7 @@ func TestGetValidSquares_QueenBlackInit(t *testing.T) {
 }
 
 func TestGetValidSquares_QueenTopLeft(t *testing.T) {
-	givenQueen := Queen{1, 1}
+	givenQueen := Queen{Indices: Indices{1, 1}}
 	expectedValidSquares := Set[Square]{
 		// horizontal
 		{'B', '8'}: {},
@@ -88,7 +90,7 @@ func TestGetValidSquares_QueenTopLeft(t *testing.T) {
 }
 
 func TestGetValidSquares_QueenCenter(t *testing.T) {
-	givenQueen := Queen{4, 4}
+	givenQueen := Queen{Indices: Indices{4, 4}}
 	expectedValidSquares := Set[Square]{
 		// horizontal
 		{'A', '5'}: {},
@@ -134,4 +136,11 @@ func TestGetValidSquares_QueenCenter(t *testing.T) {
 		_, ok := actualValidSquares[square]
 		assert.Truef(t, ok, "square: %s", square)
 	}
+}
+
+func TestGetDestDirection_QueenInvalid(t *testing.T) {
+	givenQueen := Queen{Indices: Indices{3, 7}, Square: Square{'G', '6'}}
+	actualDirs, actualErr := givenQueen.GetDestDirection(Square{'E', '5'})
+	assert.Nil(t, actualDirs)
+	assert.Equal(t, errors.UnwrapTrace(errors.NewTrace(message.InvalidDirection)), errors.UnwrapTrace(actualErr))
 }

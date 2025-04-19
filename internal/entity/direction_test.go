@@ -29,6 +29,10 @@ func TestGetDiagonalDirection_BottomLeft(t *testing.T) {
 	actualDirs := getDiagonalDirection(Square{'H', '8'}, Square{'A', '1'})
 	assert.Equal(t, expectedDirs, actualDirs)
 }
+func TestGetDiagonalDirection_Invalid(t *testing.T) {
+	actualDirs := getDiagonalDirection(Square{'E', '4'}, Square{'C', '3'})
+	assert.Nil(t, actualDirs)
+}
 
 func TestGetVerticalDirection_Top(t *testing.T) {
 	assert.Equal(t, Top, getVerticalDirection(Square{'A', '1'}, Square{'A', '8'}))
@@ -64,33 +68,33 @@ func TestGetHorizontalDirection_RightInvalid(t *testing.T) {
 
 // TODO: latest progress here
 func TestGetLMoveDirection_LeftTop(t *testing.T) {
-
+	assert.Equal(t, []Direction{Left, Top}, getLMoveDirection(Square{'C', '3'}, Square{'A', '4'}))
 }
 
 func TestGetLMoveDirection_TopLeft(t *testing.T) {
-
+	assert.Equal(t, []Direction{Top, Left}, getLMoveDirection(Square{'C', '3'}, Square{'B', '5'}))
 }
 
 func TestGetLMoveDirection_TopRight(t *testing.T) {
-
+	assert.Equal(t, []Direction{Top, Right}, getLMoveDirection(Square{'C', '3'}, Square{'D', '5'}))
 }
 
 func TestGetLMoveDirection_RightTop(t *testing.T) {
-
+	assert.Equal(t, []Direction{Right, Top}, getLMoveDirection(Square{'C', '3'}, Square{'E', '4'}))
 }
 
 func TestGetLMoveDirection_RightBottom(t *testing.T) {
-
+	assert.Equal(t, []Direction{Right, Bottom}, getLMoveDirection(Square{'C', '3'}, Square{'E', '2'}))
 }
 
 func TestGetLMoveDirection_BottomRight(t *testing.T) {
-
+	assert.Equal(t, []Direction{Bottom, Right}, getLMoveDirection(Square{'C', '3'}, Square{'D', '1'}))
 }
 
 func TestGetLMoveDirection_BottomLeft(t *testing.T) {
-
+	assert.Equal(t, []Direction{Bottom, Left}, getLMoveDirection(Square{'C', '3'}, Square{'B', '1'}))
 }
 
 func TestGetLMoveDirection_LeftBottom(t *testing.T) {
-
+	assert.Equal(t, []Direction{Left, Bottom}, getLMoveDirection(Square{'C', '3'}, Square{'A', '2'}))
 }

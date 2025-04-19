@@ -16,13 +16,13 @@ func (bishop Bishop) GetValidSquaresToMove() Set[Square] {
 		validSquares[getBoardSquare(Indices{row, col})] = NewSetElem()
 	}
 	// diagonal top left
-	traverseDiagonal(bishop.Indices, -1, -1, setValidSquares)
+	TraverseDiagonal(bishop.Indices, -1, -1, setValidSquares)
 	// diagonal top right
-	traverseDiagonal(bishop.Indices, -1, 1, setValidSquares)
+	TraverseDiagonal(bishop.Indices, -1, 1, setValidSquares)
 	// diagonal bottom right
-	traverseDiagonal(bishop.Indices, 1, 1, setValidSquares)
+	TraverseDiagonal(bishop.Indices, 1, 1, setValidSquares)
 	// diagonal bottom left
-	traverseDiagonal(bishop.Indices, 1, -1, setValidSquares)
+	TraverseDiagonal(bishop.Indices, 1, -1, setValidSquares)
 	return validSquares
 }
 

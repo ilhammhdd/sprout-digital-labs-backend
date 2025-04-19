@@ -3,11 +3,13 @@ package entity
 import (
 	"testing"
 
+	"github.com/ilhammhdd/sprout-digital-labs-backend/internal/pkg/errors"
+	"github.com/ilhammhdd/sprout-digital-labs-backend/internal/pkg/message"
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGetValidSquares_KingWhiteInit(t *testing.T) {
-	givenKing := King{8, 5}
+func TestGetValidSquares_KingLightInit(t *testing.T) {
+	givenKing := King{Indices: Indices{8, 5}}
 	expectedValidSquares := Set[Square]{
 		{'D', '1'}: {},
 		{'D', '2'}: {},
@@ -24,7 +26,7 @@ func TestGetValidSquares_KingWhiteInit(t *testing.T) {
 }
 
 func TestGetValidSquares_KingCenter(t *testing.T) {
-	givenKing := King{4, 4}
+	givenKing := King{Indices: Indices{4, 4}}
 	expectedValidSquares := Set[Square]{
 		{'C', '6'}: {},
 		{'D', '6'}: {},
@@ -41,4 +43,11 @@ func TestGetValidSquares_KingCenter(t *testing.T) {
 		_, ok := actualValidSquares[square]
 		assert.Truef(t, ok, "square: %s", square)
 	}
+}
+
+func TestGetDestDirection_KingInvalid(t *testing.T) {
+	givenKing := King{Indices: Indices{5, 5}, Square: Square{'E', '4'}}
+	actualDir, err := givenKing.GetDestDirection(Square{'C', '3'})
+	assert.Nil(t, actualDir)
+	assert.Equal(t, errors.UnwrapTrace(errors.NewTrace(message.InvalidDirection)), errors.UnwrapTrace(err))
 }

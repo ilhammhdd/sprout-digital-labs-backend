@@ -32,18 +32,18 @@ else if origin.col < dest.col && origin.row == dest.row
 ```
 #### L movement
 ```
-if origin.col == dest.col-1 && origin.row == dest.row+2
-or origin.col == dest.col-2 && origin.row == dest.row+1
-  move L bottom-right e.g. A8,B6; A8,C7
-if origin.col == dest.col+1 && origin.row == dest.row+2
-or origin.col == dest.col+2 && origin.row == dest.row+1
-  move L bottom-left e.g. H8,G6; H8,F7
 if origin.col == dest.col+1 && origin.row == dest.row-2
 or origin.col == dest.col+2 && origin.row == dest.row-1
   move L top-left e.g. H1,G3; H1,F2
 if origin.col == dest.col-1 && origin.row == dest.row-2
 or origin.col == dest.col-2 && origin.row == dest.row-1
   move L top-right e.g. A1,B3; A1,C2
+if origin.col == dest.col-1 && origin.row == dest.row+2
+or origin.col == dest.col-2 && origin.row == dest.row+1
+  move L bottom-right e.g. A8,B6; A8,C7
+if origin.col == dest.col+1 && origin.row == dest.row+2
+or origin.col == dest.col+2 && origin.row == dest.row+1
+  move L bottom-left e.g. H8,G6; H8,F7
 ```
 ### validate pieces movement
 there are several approaches:

@@ -11,6 +11,9 @@ const (
 type Direction int8
 
 func getDiagonalDirection(origin, dest Square) []Direction {
+	if max(origin[0], dest[0])-min(origin[0], dest[0]) != max(origin[1], dest[1])-min(origin[1], dest[1]) {
+		return nil
+	}
 	if origin[0] > dest[0] && origin[1] < dest[1] {
 		return []Direction{Top, Left}
 	} else if origin[0] < dest[0] && origin[1] < dest[1] {
@@ -48,5 +51,22 @@ func getHorizontalDirection(origin, dest Square) Direction {
 }
 
 func getLMoveDirection(origin, dest Square) []Direction {
+	if origin[0] == dest[0]+2 && origin[1] == dest[1]-1 {
+		return []Direction{Left, Top}
+	} else if origin[0] == dest[0]+1 && origin[1] == dest[1]-2 {
+		return []Direction{Top, Left}
+	} else if origin[0] == dest[0]-1 && origin[1] == dest[1]-2 {
+		return []Direction{Top, Right}
+	} else if origin[0] == dest[0]-2 && origin[1] == dest[1]-1 {
+		return []Direction{Right, Top}
+	} else if origin[0] == dest[0]-2 && origin[1] == dest[1]+1 {
+		return []Direction{Right, Bottom}
+	} else if origin[0] == dest[0]-1 && origin[1] == dest[1]+2 {
+		return []Direction{Bottom, Right}
+	} else if origin[0] == dest[0]+1 && origin[1] == dest[1]+2 {
+		return []Direction{Bottom, Left}
+	} else if origin[0] == dest[0]+2 && origin[1] == dest[1]+1 {
+		return []Direction{Left, Bottom}
+	}
 	return nil
 }

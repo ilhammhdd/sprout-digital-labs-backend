@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGetValidSquaresToMove_BishopLeftBlackInit(t *testing.T) {
+func TestGetValidSquaresToMove_BishopLeftDarkInit(t *testing.T) {
 	givenBishop := Bishop{Indices: Indices{1, 3}}
 	expectedValidSquares := Set[Square]{
 		// diagonal bottom right
@@ -76,7 +76,7 @@ func TestGetValidSquaresToMove_BishopCenter(t *testing.T) {
 	}
 }
 
-func TestGetDestDirection_Invalid(t *testing.T) {
+func TestGetDestDirection_BishopInvalid(t *testing.T) {
 	givenBishop := Bishop{Indices: Indices{1, 8}, Square: Square{'H', '8'}}
 	actualDirs, actualErr := givenBishop.GetDestDirection(Square{'H', '7'})
 	assert.Equal(t, errors.UnwrapTrace(actualErr), errors.UnwrapTrace(errors.NewTrace(message.InvalidDirection)))

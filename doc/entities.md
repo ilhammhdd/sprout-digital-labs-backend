@@ -2,8 +2,8 @@
 - board [][]string
 - turn
   - id
-  - isWhitePlayer
+  - isLightPlayer
   - action
 - captured
-  - white []string
-  - black []string
+  - light []string
+  - dark []string

@@ -60,6 +60,36 @@
                     "expr": "args"
                 }
             ]
+        },
+        {
+            "id": "Invalid square to move",
+            "message": "Invalid square to move",
+            "translation": "Kotak tujuan bergerak tidak valid",
+            "placeholders": [
+                {
+                    "id": "Args",
+                    "string": "%[1]v",
+                    "type": "[]any",
+                    "underlyingType": "[]any",
+                    "argNum": 1,
+                    "expr": "args"
+                }
+            ]
+        },
+        {
+            "id": "There's a piece blocking",
+            "message": "There's a piece blocking",
+            "translation": "Ada bidak yang menghalangi",
+            "placeholders": [
+                {
+                    "id": "Args",
+                    "string": "%[1]v",
+                    "type": "[]any",
+                    "underlyingType": "[]any",
+                    "argNum": 1,
+                    "expr": "args"
+                }
+            ]
         }
     ]
 }

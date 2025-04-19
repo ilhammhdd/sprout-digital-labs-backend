@@ -3,11 +3,13 @@ package entity
 import (
 	"testing"
 
+	"github.com/ilhammhdd/sprout-digital-labs-backend/internal/pkg/errors"
+	"github.com/ilhammhdd/sprout-digital-labs-backend/internal/pkg/message"
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGetValidSquaresToMove_RookWhiteRightInit(t *testing.T) {
-	givenRook := Rook{8, 8}
+func TestGetValidSquaresToMove_RookLightRightInit(t *testing.T) {
+	givenRook := Rook{Indices: Indices{8, 8}}
 	expectedValidSquares := Set[Square]{
 		// vertical
 		{'H', '2'}: {},
@@ -35,7 +37,7 @@ func TestGetValidSquaresToMove_RookWhiteRightInit(t *testing.T) {
 }
 
 func TestGetValidSquaresToMove_RookCenter(t *testing.T) {
-	givenRook := Rook{5, 5}
+	givenRook := Rook{Indices: Indices{5, 5}}
 	expectedValidSquares := Set[Square]{
 		// vertical
 		{'E', '1'}: {},
@@ -60,4 +62,11 @@ func TestGetValidSquaresToMove_RookCenter(t *testing.T) {
 		_, ok := actualValidSquares[square]
 		assert.Truef(t, ok, "square: %s", square)
 	}
+}
+
+func TestGetDestDirection_RookInvalid(t *testing.T) {
+	givenRook := Rook{Indices: Indices{3, 7}, Square: Square{'G', '6'}}
+	actualDirs, actualErr := givenRook.GetDestDirection(Square{'E', '5'})
+	assert.Nil(t, actualDirs)
+	assert.Equal(t, errors.UnwrapTrace(errors.NewTrace(message.InvalidDirection)), errors.UnwrapTrace(actualErr))
 }

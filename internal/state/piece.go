@@ -6,25 +6,25 @@ import (
 	"github.com/ilhammhdd/sprout-digital-labs-backend/internal/pkg/message"
 )
 
-func parsePiece(square entity.Square) (entity.Piece, error) {
-	indices := getBoardIndices(square)
+func ParsePiece(square entity.Square) (entity.Piece, error) {
+	indices := GetBoardIndices(square)
 	piece := Board[indices[0]][indices[1]]
 	if piece == "" || len(piece) < 2 {
 		return nil, errors.NewTrace(message.NotAPiece)
 	}
 	switch piece[0] {
 	case 'P':
-		return entity.Pawn(indices), nil
+		return entity.Pawn{Indices: indices, Square: square}, nil
 	case 'B':
 		return entity.Bishop{Indices: indices, Square: square}, nil
 	case 'T':
-		return entity.Knight(indices), nil
+		return entity.Knight{Indices: indices, Square: square}, nil
 	case 'R':
-		return entity.Rook(indices), nil
+		return entity.Rook{Indices: indices, Square: square}, nil
 	case 'Q':
-		return entity.Queen(indices), nil
+		return entity.Queen{Indices: indices, Square: square}, nil
 	case 'K':
-		return entity.King(indices), nil
+		return entity.King{Indices: indices, Square: square}, nil
 	default:
 		return nil, errors.NewTrace(message.NotAPiece)
 	}

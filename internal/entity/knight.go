@@ -1,6 +1,14 @@
 package entity
 
-type Knight Indices
+import (
+	"github.com/ilhammhdd/sprout-digital-labs-backend/internal/pkg/errors"
+	"github.com/ilhammhdd/sprout-digital-labs-backend/internal/pkg/message"
+)
+
+type Knight struct {
+	Indices
+	Square
+}
 
 func (knight Knight) GetValidSquaresToMove() Set[Square] {
 	validSquares := make(Set[Square])
@@ -25,11 +33,15 @@ func (knight Knight) GetValidSquaresToMove() Set[Square] {
 }
 
 func (knight Knight) setIfInBoundary(rowOp, colOp int, fn func(row, col int)) {
-	if knight[0]+rowOp > 0 && knight[0]+rowOp < 9 && knight[1]+colOp > 0 && knight[1]+colOp < 9 {
-		fn(knight[0]+rowOp, knight[1]+colOp)
+	if knight.Indices[0]+rowOp > 0 && knight.Indices[0]+rowOp < 9 && knight.Indices[1]+colOp > 0 && knight.Indices[1]+colOp < 9 {
+		fn(knight.Indices[0]+rowOp, knight.Indices[1]+colOp)
 	}
 }
 
 func (knight Knight) GetDestDirection(dest Square) ([]Direction, error) {
-	return nil, nil
+	dirs := getLMoveDirection(knight.Square, dest)
+	if dirs == nil {
+		return nil, errors.NewTrace(message.InvalidDirection)
+	}
+	return dirs, nil
 }

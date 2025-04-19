@@ -3,11 +3,13 @@ package entity
 import (
 	"testing"
 
+	"github.com/ilhammhdd/sprout-digital-labs-backend/internal/pkg/errors"
+	"github.com/ilhammhdd/sprout-digital-labs-backend/internal/pkg/message"
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGetValidSquaresToMove_KnightLeftWhiteInit(t *testing.T) {
-	givenKnight := Knight{8, 2}
+func TestGetValidSquaresToMove_KnightLeftLightInit(t *testing.T) {
+	givenKnight := Knight{Indices: Indices{8, 2}}
 	expectedValidSquares := Set[Square]{
 		{'C', '3'}: {},
 		{'D', '2'}: {},
@@ -22,7 +24,7 @@ func TestGetValidSquaresToMove_KnightLeftWhiteInit(t *testing.T) {
 }
 
 func TestGetValidSquaresToMove_KnightCenter(t *testing.T) {
-	givenKnight := Knight{4, 4}
+	givenKnight := Knight{Indices: Indices{4, 4}}
 	expectedValidSquares := Set[Square]{
 		{'B', '6'}: {},
 		{'C', '7'}: {},
@@ -39,4 +41,11 @@ func TestGetValidSquaresToMove_KnightCenter(t *testing.T) {
 		_, ok := actualValidSquares[square]
 		assert.Truef(t, ok, "square: %s", square)
 	}
+}
+
+func TestGetDestDirection_KnightInvalid(t *testing.T) {
+	givenKnight := Knight{Indices: Indices{5, 5}, Square: Square{'E', '5'}}
+	actualDir, actualErr := givenKnight.GetDestDirection(Square{'C', '7'})
+	assert.Nil(t, actualDir)
+	assert.Equal(t, errors.UnwrapTrace(errors.NewTrace(message.InvalidDirection)), errors.UnwrapTrace(actualErr))
 }

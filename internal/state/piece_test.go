@@ -7,44 +7,44 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestParsePiece_KingWhite(t *testing.T) {
-	expectedPiece := entity.King{8, 5}
-	actualPiece, actualErr := parsePiece(entity.Square{'E', '1'})
+func TestParsePiece_KingLight(t *testing.T) {
+	expectedPiece := entity.King{Indices: entity.Indices{8, 5}, Square: entity.Square{'E', '1'}}
+	actualPiece, actualErr := ParsePiece(entity.Square{'E', '1'})
 	assert.NoError(t, actualErr)
 	assert.Equal(t, expectedPiece, actualPiece)
 }
 
-func TestParsePiece_QueenBlack(t *testing.T) {
-	expectedPiece := entity.Queen{1, 4}
-	actualPiece, actualErr := parsePiece(entity.Square{'D', '8'})
+func TestParsePiece_QueenDark(t *testing.T) {
+	expectedPiece := entity.Queen{Indices: entity.Indices{1, 4}, Square: entity.Square{'D', '8'}}
+	actualPiece, actualErr := ParsePiece(entity.Square{'D', '8'})
 	assert.NoError(t, actualErr)
 	assert.Equal(t, expectedPiece, actualPiece)
 }
 
-func TestParsePiece_RookWhiteRight(t *testing.T) {
-	expectedPiece := entity.Rook{8, 8}
-	actualPiece, actualErr := parsePiece(entity.Square{'H', '1'})
+func TestParsePiece_RookLightRight(t *testing.T) {
+	expectedPiece := entity.Rook{Indices: entity.Indices{8, 8}, Square: entity.Square{'H', '1'}}
+	actualPiece, actualErr := ParsePiece(entity.Square{'H', '1'})
 	assert.NoError(t, actualErr)
 	assert.Equal(t, expectedPiece, actualPiece)
 }
 
-func TestParsePiece_KnightBlackLeft(t *testing.T) {
-	expectedPiece := entity.Knight{1, 2}
-	actualPiece, actualErr := parsePiece(entity.Square{'B', '8'})
+func TestParsePiece_KnightDarkLeft(t *testing.T) {
+	expectedPiece := entity.Knight{Indices: entity.Indices{1, 2}, Square: entity.Square{'B', '8'}}
+	actualPiece, actualErr := ParsePiece(entity.Square{'B', '8'})
 	assert.NoError(t, actualErr)
 	assert.Equal(t, expectedPiece, actualPiece)
 }
 
-func TestParsePiece_BishopWhiteRight(t *testing.T) {
+func TestParsePiece_BishopLightRight(t *testing.T) {
 	expectedPiece := entity.Bishop{Indices: entity.Indices{8, 6}, Square: entity.Square{'F', '1'}}
-	actualPiece, actualErr := parsePiece(entity.Square{'F', '1'})
+	actualPiece, actualErr := ParsePiece(entity.Square{'F', '1'})
 	assert.NoError(t, actualErr)
 	assert.Equal(t, expectedPiece, actualPiece)
 }
 
-func TestParsePiece_PawnWhite(t *testing.T) {
-	expectedPiece := entity.Pawn{2, 3}
-	actualPiece, actualErr := parsePiece(entity.Square{'C', '7'})
+func TestParsePiece_PawnLight(t *testing.T) {
+	expectedPiece := entity.Pawn{Indices: entity.Indices{2, 3}, Square: entity.Square{'C', '7'}}
+	actualPiece, actualErr := ParsePiece(entity.Square{'C', '7'})
 	assert.NoError(t, actualErr)
 	assert.Equal(t, expectedPiece, actualPiece)
 }

@@ -1,16 +1,16 @@
 ## extended functional requirements
 - initialize standard 8*8 chess board
 - rows and cols should have marks on them on both vertical and horizontal
-- the game only ends if king piece of either black or white is captured, 
-- white goes first then black, then alternate between them
+- the game only ends if king piece of either dark or light is captured, 
+- light goes first then dark, then alternate between them
 - after a piece moved, print out the state of the board including whose turn currently is
 - provide an input to print out current board state including whose turn currently is
 - a piece is moved by choosing its square on the board and the square where the player want to move it
 - pawn is the only piece whose capture movement is different from regular movement
 - pawn can only capture forward
 - pawn can move 2 cells forward on its first move
-- the pieces that can be moved depends on whose turn currently is, e.g. if it's currently black's turn then 
-only black pieces can be moved, vice versa for white
+- the pieces that can be moved depends on whose turn currently is, e.g. if it's currently dark's turn then 
+only dark pieces can be moved, vice versa for light
 - check and checkmate is not required
 - expect for knight, when moving the piece
   - there's a friendly piece on the way then cannot move to and beyond that

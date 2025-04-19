@@ -15,6 +15,10 @@ func Translate(locale localization.Localization, message string, args ...any) st
 		return locale.Translate(messagePkg.NotAPiece, args...)
 	case messagePkg.InvalidDirection:
 		return locale.Translate(messagePkg.InvalidDirection, args...)
+	case messagePkg.InvalidSquareToMove:
+		return locale.Translate(messagePkg.InvalidSquareToMove, args...)
+	case messagePkg.TheresAPieceBlocking:
+		return locale.Translate(messagePkg.TheresAPieceBlocking, args...)
 	default:
 		return locale.Translate(message)
 	}

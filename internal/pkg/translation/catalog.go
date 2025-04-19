@@ -41,26 +41,30 @@ func init() {
 var messageKeyToIndex = map[string]int{
 	"Hello from Sprout Digital Labs Backend": 0,
 	"Invalid direction":                      3,
+	"Invalid square to move":                 4,
 	"Not a piece":                            2,
 	"Square is out of bounds":                1,
+	"There's a piece blocking":               5,
 }
 
-var en_USIndex = []uint32{ // 5 elements
+var en_USIndex = []uint32{ // 7 elements
 	0x00000000, 0x00000027, 0x0000003f, 0x0000004b,
-	0x0000005d,
-} // Size: 44 bytes
+	0x0000005d, 0x00000074, 0x0000008d,
+} // Size: 52 bytes
 
-const en_USData string = "" + // Size: 93 bytes
+const en_USData string = "" + // Size: 141 bytes
 	"\x02Hello from Sprout Digital Labs Backend\x02Square is out of bounds" +
-	"\x02Not a piece\x02Invalid direction"
+	"\x02Not a piece\x02Invalid direction\x02Invalid square to move\x02There'" +
+	"s a piece blocking"
 
-var id_IDIndex = []uint32{ // 5 elements
+var id_IDIndex = []uint32{ // 7 elements
 	0x00000000, 0x00000026, 0x00000040, 0x00000053,
-	0x00000064,
-} // Size: 44 bytes
+	0x00000064, 0x00000086, 0x000000a1,
+} // Size: 52 bytes
 
-const id_IDData string = "" + // Size: 100 bytes
+const id_IDData string = "" + // Size: 161 bytes
 	"\x02Halo dari Sprout Digital Labs Backend\x02Kotak berada diluar batas" +
-	"\x02Bukan sebuah bidak\x02Arah tidak valid"
+	"\x02Bukan sebuah bidak\x02Arah tidak valid\x02Kotak tujuan bergerak tida" +
+	"k valid\x02Ada bidak yang menghalangi"
 
-	// Total table size 281 bytes (0KiB); checksum: DD297F5D
+	// Total table size 406 bytes (0KiB); checksum: 7123C1AD

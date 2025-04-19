@@ -68,6 +68,40 @@
                 }
             ],
             "fuzzy": true
+        },
+        {
+            "id": "Invalid square to move",
+            "message": "Invalid square to move",
+            "translation": "Invalid square to move",
+            "translatorComment": "Copied from source.",
+            "placeholders": [
+                {
+                    "id": "Args",
+                    "string": "%[1]v",
+                    "type": "[]any",
+                    "underlyingType": "[]any",
+                    "argNum": 1,
+                    "expr": "args"
+                }
+            ],
+            "fuzzy": true
+        },
+        {
+            "id": "There's a piece blocking",
+            "message": "There's a piece blocking",
+            "translation": "There's a piece blocking",
+            "translatorComment": "Copied from source.",
+            "placeholders": [
+                {
+                    "id": "Args",
+                    "string": "%[1]v",
+                    "type": "[]any",
+                    "underlyingType": "[]any",
+                    "argNum": 1,
+                    "expr": "args"
+                }
+            ],
+            "fuzzy": true
         }
     ]
 }
